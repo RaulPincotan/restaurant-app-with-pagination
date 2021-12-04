@@ -46,4 +46,9 @@ public class RestaurantController {
     public Restaurant replaceRestaurant(@PathVariable Long id, @RequestBody Restaurant restaurant) {
         return restaurantService.replaceRestaurant(id, restaurant);
     }
+
+    @DeleteMapping("/{id}")
+    public Restaurant removeRestaurant(@PathVariable Long id) {
+        return restaurantService.removeRestaurant(id).orElseThrow(() -> new RestaurantException("Restaurant with id " + id + " no puedo deleto"));
+    }
 }

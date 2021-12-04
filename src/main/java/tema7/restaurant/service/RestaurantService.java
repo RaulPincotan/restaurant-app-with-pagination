@@ -47,4 +47,10 @@ public class RestaurantService {
         dbRestaurant.setSince(restaurant.getSince());
         dbRestaurant.setStars(restaurant.getStars());
     }
+
+    public Optional<Restaurant> removeRestaurant(Long id) {
+        Optional<Restaurant> restaurant = restaurantRepository.findById(id);
+        restaurant.ifPresent(restaurant1 -> restaurantRepository.delete(restaurant1));
+        return restaurant;
+    }
 }
